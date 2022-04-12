@@ -1,11 +1,16 @@
 
-<div class="basic-weather-container" *ngIf="weatherInfo && weatherInfo.location">
-    <p>Here is weather info for <b>{{ weatherInfo.location.name }}</b>.</p>
-    <p>Cloudcover: {{weatherInfo.current.cloudcover}}</p>
-    <p>Feelslike: {{weatherInfo.current.feelslike}}</p>
-    <p>Humidity: {{weatherInfo.current.humidity}}</p>
-    <p>observation_time: {{weatherInfo.current.observation_time}}</p>
-    <p>Temperature: {{weatherInfo.current.temperature}}</p>
-    <p>UV Index: {{weatherInfo.current.uv_index}}</p>
-    <p>Visibility: {{weatherInfo.current.visibility}}</p>
+<div class="card" *ngIf="weatherInfo && weatherInfo.location">
+
+    <h2>{{ weatherInfo.location.name }}</h2>
+    <h3>{{weatherInfo.current.weather_descriptions[0]}}<span>Wind {{weatherInfo.current.wind_speed}}km/h <span class="dot">•</span> Precip {{weatherInfo.current.precip}}%</span></h3>
+    <h1>{{weatherInfo.current.feelslike}}°</h1>
+    <!-- card style picked from this codepen: https://codepen.io/thomvallez/pen/NqyqWV -->
+    <div class="sky">
+        <div class="sun"></div>
+        <div class="cloud">
+            <div class="circle-small"></div>
+            <div class="circle-tall"></div>
+            <div class="circle-medium"></div>
+        </div>
+    </div>
 </div>
