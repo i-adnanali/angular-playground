@@ -1,3 +1,6 @@
+.main-container {
+    margin-left: 40%;
+}
 a:not([href]) {
     text-decoration: underline;
     cursor: pointer;

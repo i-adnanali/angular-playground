@@ -1,19 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../weather.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-weather-info',
   templateUrl: './weather-info.component.html',
   styleUrls: ['./weather-info.component.css']
 })
-export class WeatherInfoComponent implements OnInit {
+export class WeatherInfoComponent {
 
-  constructor(private weatherService: WeatherService) { }
-  weatherInfo: any = {};
+  constructor() { }
+  locationName: string = '';
 
-  ngOnInit(): void {
-    this.weatherService.getWeatherInfo('Lahore').subscribe(response => {
-      this.weatherInfo = response;
-    });
+  receiveLocationItemFromChild(locationInput: any){
+    this.locationName = locationInput
   }
 }
