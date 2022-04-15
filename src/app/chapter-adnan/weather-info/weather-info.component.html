@@ -1,6 +1,4 @@
 <div class="weather-container">
-  <div>Enter Location Name to fetch Weather details.</div>
-  <br /><br />
   <app-weather-input (newLocationItemFromChild) = "receiveLocationItemFromChild($event)"></app-weather-input>
   <app-weather-card *ngIf="locationName" [locationInputFromParent] = "locationName"></app-weather-card>
 </div>

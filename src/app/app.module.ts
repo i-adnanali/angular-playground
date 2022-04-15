@@ -12,6 +12,7 @@ import { WeclomePageComponent } from './weclome-page/weclome-page.component';
 import { WeatherInfoComponent } from './chapter-adnan/weather-info/weather-info.component';
 import { WeatherInputComponent } from './chapter-adnan/weather-info/weather-input/weather-input.component';
 import { WeatherCardComponent } from './chapter-adnan/weather-info/weather-card/weather-card.component';
+import { TemplateDrivenFormComponent } from './chapter-adnan/template-driven-form/template-driven-form.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { WeatherCardComponent } from './chapter-adnan/weather-info/weather-card/
     ChapterRubabComponent,
     WeatherInfoComponent,
     WeatherInputComponent,
-    WeatherCardComponent
+    WeatherCardComponent,
+    TemplateDrivenFormComponent
   ],
   imports: [
     BrowserModule,
