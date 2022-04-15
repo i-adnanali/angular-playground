@@ -1,5 +1,25 @@
-{{ modal | json }}
-<form #devForm="ngForm">
+<div [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+  <div class="row">
+    <div class="col-xs-3">Name</div>
+    <div class="col-xs-9">{{ modal.name }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Alter Ego</div>
+    <div class="col-xs-9">{{ modal.alterEgo }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Power</div>
+    <div class="col-xs-9">{{ modal.stack }}</div>
+  </div>
+  <br />
+  <button type="button" class="btn btn-primary" (click)="submitted = false">
+    Edit
+  </button>
+</div>
+
+<form #devForm="ngForm" [hidden]="submitted" (ngSubmit)="onSubmit()">
+  <h2>Dev Form</h2>
   <div class="form-group">
     <label for="name">Name</label>
     <input
@@ -9,8 +29,13 @@
       class="form-control"
       type="text"
       required
+      #name="ngModel"
     />
-
+    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+      Name is required
+    </div>
+  </div>
+  <div class="form-group">
     <label for="altEgo">Alter Ego</label>
     <input
       type="text"
@@ -19,18 +44,35 @@
       [(ngModel)]="modal.alterEgo"
       class="form-control"
     />
-
+  </div>
+  <div class="form-group">
     <label for="stack">Tech Stack</label>
-    <select 
-        class="form-control" 
-        [(ngModel)]="modal.stack" 
-        id="stack"
-        name="stack"
-        >
+    <select
+      class="form-control"
+      [(ngModel)]="modal.stack"
+      id="stack"
+      name="stack"
+      #stack="ngModel"
+      required
+    >
       <option *ngFor="let stack of stacks" [value]="stack">{{ stack }}</option>
     </select>
 
     &nbsp;&nbsp;
   </div>
-  <button class="btn btn-success" type="submit">Submit</button>
+  <button
+    class="btn btn-success"
+    type="submit"
+    [disabled]="!devForm.form.valid"
+  >
+    Submit
+  </button>
+  &nbsp;&nbsp;
+  <button
+    class="btn btn-default"
+    type="button"
+    (click)="newDev(); devForm.reset()"
+  >
+    New Dev
+  </button>
 </form>

@@ -19,4 +19,7 @@ export class TemplateDrivenFormComponent {
     this.submitted = true;
   }
 
+  newDev(){
+    this.modal = new Dev(2, '', '', '');
+  }
 }
