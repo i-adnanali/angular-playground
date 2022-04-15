@@ -1,16 +1,26 @@
-<label for="location">Enter Location</label>
-<input
-  class="form-control"
-  required
-  type="text"
-  id="location"
-  #newLocation
-/>
-<br>
-<button
-  type="submit"
-  class="btn btn-success"
-  (click)="submitWeatherLocation(newLocation.value)"
->
-  Fetch Weather Info
-</button>
+<form #weatherInputForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="location">Enter Location</label>
+    <input
+      type="text"
+      id="location"
+      name="location"
+      [(ngModel)]="locationName"
+      class="form-control"
+      #location="ngModel"
+      required
+    />
+    <div [hidden]="location.valid || location.pristine" class="alert alert-danger">
+      Location is required
+    </div>
+    <br />
+    <button
+      type="button"
+      [disabled]="!weatherInputForm.form.valid"
+      class="btn btn-success"
+      (click)="onSubmit()"
+    >
+      Fetch Weather Info
+    </button>
+  </div>
+</form>
