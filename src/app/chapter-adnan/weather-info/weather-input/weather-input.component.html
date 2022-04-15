@@ -1,2 +1,16 @@
-<input type="text" id="location-input" #newLocation>
-<button type="button" (click)="submitWeatherLocation(newLocation.value)">Fetch Weather Info</button>
+<label for="location">Enter Location</label>
+<input
+  class="form-control"
+  required
+  type="text"
+  id="location"
+  #newLocation
+/>
+<br>
+<button
+  type="submit"
+  class="btn btn-success"
+  (click)="submitWeatherLocation(newLocation.value)"
+>
+  Fetch Weather Info
+</button>

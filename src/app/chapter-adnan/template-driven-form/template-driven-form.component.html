@@ -1,0 +1,36 @@
+{{ modal | json }}
+<form #devForm="ngForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      id="name"
+      name="name"
+      [(ngModel)]="modal.name"
+      class="form-control"
+      type="text"
+      required
+    />
+
+    <label for="altEgo">Alter Ego</label>
+    <input
+      type="text"
+      id="altEgo"
+      name="altEgo"
+      [(ngModel)]="modal.alterEgo"
+      class="form-control"
+    />
+
+    <label for="stack">Tech Stack</label>
+    <select 
+        class="form-control" 
+        [(ngModel)]="modal.stack" 
+        id="stack"
+        name="stack"
+        >
+      <option *ngFor="let stack of stacks" [value]="stack">{{ stack }}</option>
+    </select>
+
+    &nbsp;&nbsp;
+  </div>
+  <button class="btn btn-success" type="submit">Submit</button>
+</form>
