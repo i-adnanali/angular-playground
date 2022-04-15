@@ -8,10 +8,10 @@ import { Component, EventEmitter, Output } from '@angular/core';
 
 export class WeatherInputComponent {
   constructor() { }
-
+  locationName: string = 'Lahore';
   @Output() newLocationItemFromChild = new EventEmitter<string>();
   
-  submitWeatherLocation(value: string){
-    this.newLocationItemFromChild.emit(value);
+  onSubmit(){
+    this.newLocationItemFromChild.emit(this.locationName);
   }
 }
